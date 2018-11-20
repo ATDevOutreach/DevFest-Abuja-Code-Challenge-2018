@@ -2,3 +2,4 @@ africastalking
 django
 django_cron
 django-heroku
+gunicorn
