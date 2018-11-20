@@ -1,0 +1,34 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <title>At-Demo Dashboard</title>
+    </head>
+    <body>
+            <div class="container-fluid" id="root">
+        <header>
+            <h1>{{title}}</h1>
+            <h4 class="text-center">Food ordering app via USSD</h4>
+        </header>
+        <main>
+            <div class="row">
+                <div v-for="order in orders" v-if="order.open" class="col-md-4 order-card">
+                    <h3 title="Customer Name">{{order.name}}</h3>
+                    <span class="closeicon" @click="close(order)" title="Close Order">X</span>
+                    <p title="Order Description"><strong>Order:</strong> {{order.description}}</p>
+                    <p title="Customer Address"><strong>Address:</strong> {{order.address}}</p>
+                    <p title="Customer Telephone"><strong>Contact:</strong> {{order.telephone}}</p>
+                </div>
+            </div>
+        </main>
+    </div> 
+    <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script> <!--CDN link for Vue Web Framework-->
+        <script src="https://js.pusher.com/4.3/pusher.min.js"></script> <!--CDN link for Pusher-->
+        <script src="index.js"></script>
+    </body>
+    </html>
