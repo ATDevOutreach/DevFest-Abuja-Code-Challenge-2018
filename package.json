@@ -1,0 +1,18 @@
+{
+  "name": "at-demo",
+  "version": "1.0.0",
+  "description": "Demo for GDG Abuja and Africa's Talking challenge using Vue, Pusherand Africa's Talking USSD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nnamdi Okoro",
+  "license": "MIT",
+  "dependencies": {
+    "africastalking": "^0.4.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "pusher": "^2.1.3"
+  }
+}
