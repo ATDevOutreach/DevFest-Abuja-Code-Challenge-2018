@@ -8,7 +8,8 @@ import json
 def process_listen(request):
     incoming_data = json.loads(request.body)
     text_data = "{}".format(incoming_data['text'])
-    hook = Hook(data=text_data)
+    # TODO: Get exact object value
+    hook = Hook(data=incoming_data)
     hook.save()
     print(text_data)
     return HttpResponse(text_data)
