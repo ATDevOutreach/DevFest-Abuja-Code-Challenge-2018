@@ -11,7 +11,7 @@ Windows Users:
     - `set MY_EMAIL_HOST_PASSWORD=YourPassword`
 
 ## Setup
-- Clone the repo and change to project directory: `cd pusher`
+- Clone the repo and checkout to the branch: `git checkout 2348136457976`
 - Install dependencies: `pip install -r requirements.txt`
 - Migrate database: `python manage.py migrate`
 - Create super user: `python manage.py createsuperuser`
