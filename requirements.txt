@@ -1,5 +1,5 @@
 africastalking
 django
-django_cron
 django-heroku
 gunicorn
+sentry_sdk
