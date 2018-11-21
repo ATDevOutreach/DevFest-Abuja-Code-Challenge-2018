@@ -8,7 +8,7 @@ import json
 @csrf_exempt
 @require_POST
 def process_listen(request):
-    incoming_data = json.loads(request.body)
+    incoming_data = json.dumps(request.body)
     text_data = "{}".format(incoming_data['text'])
     # TODO: Get exact object value
     hook = Hook(data=incoming_data)
