@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'messenger'
+    'messenger',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -140,5 +141,9 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('MY_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('MY_EMAIL_HOST_PASSWORD')
+
+LOGIN_REDIRECT_URL = 'home'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 django_heroku.settings(locals())
