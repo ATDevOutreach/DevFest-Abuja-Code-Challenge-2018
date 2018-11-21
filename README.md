@@ -1,5 +1,5 @@
 # GDG DevFest Abuja - Code Challenge
-## Due: 20th November 2018 or Earlier
+## Due: 23rd November 2018 or Earlier
 
 ## Simple Unchanging Rules
 The code challenge is and will always be judged using the following criteria:
