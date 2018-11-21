@@ -1,0 +1,23 @@
+{
+  "name": "africas_talking",
+  "version": "1.0.0",
+  "description": "An application implementing features of africsa talking SDK",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abubakre Abdulqudus",
+  "license": "ISC",
+  "dependencies": {
+    "africastalking": "^0.4.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^6.1.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.3.13",
+    "save": "^2.3.2"
+  }
+}

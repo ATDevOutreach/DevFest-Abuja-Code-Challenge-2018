@@ -1,0 +1,32 @@
+<% include partials/header %>
+  <% if(message.length > 0){%>
+    <div id="alertDialog" class="alert alert-danger register-success">
+      <span>
+        <p role="alert"><%=message%></p>
+        <p onclick="hideAlert()" class="close-alert">X</p>
+      </span>          
+    </div>
+  <% }%>
+  <div class="landing">
+    <img src="images/landing.png" alt="A background image showing african map">
+  </div>
+  <div class="form-cover">
+    <div class="form">
+      <form action="/login" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" placeholder="e.g JohnDoe123" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="***********" class="form-control" required>
+        </div>
+        <div class="form-btns">
+          <button type="submit" class="btn btn-outline-success">Register</button>
+          <button type="reset" class="btn btn-outline-danger">Clear</button>
+        </div>
+      </form>
+      <p>Don't have an account? <a href="/register">Sign up</a></p>
+    </div>
+  </div>
+<% include partials/footer %>
