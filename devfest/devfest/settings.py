@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'api',
+
 ]
 
 MIDDLEWARE = [
@@ -69,6 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'devfest.wsgi.application'
 
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
