@@ -2,10 +2,12 @@ defmodule WalletWeb.Router do
   use WalletWeb, :router
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
-  scope "/api", WalletWeb do
-    pipe_through :api
+  scope "/", WalletWeb do
+    pipe_through(:api)
+
+    post("/ussd_handler", UssdController, :index)
   end
 end

@@ -11,9 +11,10 @@ defmodule Wallet.Application do
       # Start the Ecto repository
       Wallet.Repo,
       # Start the endpoint when the application starts
-      WalletWeb.Endpoint
+      WalletWeb.Endpoint,
       # Starts a worker by calling: Wallet.Worker.start_link(arg)
       # {Wallet.Worker, arg},
+      Wallet.PendingTransactionsCache
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

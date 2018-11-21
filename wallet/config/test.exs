@@ -11,8 +11,8 @@ config :logger, level: :warn
 
 # Configure your database
 config :wallet, Wallet.Repo,
-  username: "root",
-  password: "",
+  username: System.get_env("DB_USER"),
+  password: System.get_env("DB_PASSWORD"),
   database: "wallet_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
