@@ -1,10 +1,14 @@
-# Pusher
+# Pusher [Deployed version](https://puzher.herokuapp.com)
 
 ## Configurations
 Configure Database Settings in ~/.bashrc file:
     - Add the following lines to the end of the file and run `source ~/.bashrc`
-    - `export MY_EMAIL_HOST_USER='YourEmail@gmail.com'`
-    - `export MY_EMAIL_HOST_PASSWORD='YourPassword'`
+    - `export MY_EMAIL_HOST_USER=YourEmail@gmail.com`
+    - `export MY_EMAIL_HOST_PASSWORD=YourPassword`
+
+Windows Users:
+    - `set MY_EMAIL_HOST_USER=YourEmail@gmail.com`
+    - `set MY_EMAIL_HOST_PASSWORD=YourPassword`
 
 ## Setup
 - Clone the repo and change to project directory: `cd pusher`
