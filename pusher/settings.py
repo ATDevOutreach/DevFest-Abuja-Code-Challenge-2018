@@ -151,6 +151,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 #Path to USSD Screen Strings
-DEFAULT_USSD_SCREEN_JOURNEY = "messenger.ussd_sceen.yaml"
+DEFAULT_USSD_SCREEN_JOURNEY = os.path.join(BASE_DIR, 'messenger/ussd_screen.yaml')
 
 django_heroku.settings(locals())
