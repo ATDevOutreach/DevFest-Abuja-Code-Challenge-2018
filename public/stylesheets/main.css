@@ -60,3 +60,8 @@ body {
   width: 35vw;
   max-width: 40vw !important;
 }
+.radio-btns {
+  position: absolute;
+  top: 10vh;
+  left: 33.3vw;
+}

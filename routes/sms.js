@@ -22,7 +22,7 @@ router.post('/send',(req,res) => {
   })
   .catch( error => {
       console.log(error);
-      req.flash('error', 'Oops, something went wrong');
+      req.flash('success', 'Oops, something went wrong');
       res.redirect('../home')
   });
 })

@@ -10,13 +10,13 @@ let payment = AfricasTalking.PAYMENTS
 
 router.post('/',(req,res) => {
   const options = {
-    productName: 'MyProduct',
-    phoneNumber: '+2348033723897',
-    currencyCode: 'NGN',
-    amount: 500,
+    productName: 'MyProduct', // The name of a demo product created in my sandbox app
+    phoneNumber: req.body.number,
+    currencyCode: req.body.currency,
+    amount: req.body.amount,
     metaData: {name: 'Abubakre Abdulqudus'}
   }
-
+  console.log(options);
   // Make the call
   // payment.mobileCheckout(options)
   // .then(response => {
