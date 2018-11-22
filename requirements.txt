@@ -1,0 +1,7 @@
+africastalking
+django
+django-crispy-forms
+django-heroku
+gunicorn
+sentry_sdk
+ussd_airflow
