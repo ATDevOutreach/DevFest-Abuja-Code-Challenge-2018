@@ -1,0 +1,17 @@
+initial_screen: enter_message
+
+enter_message:
+  type: input_screen
+  text: Enter your message
+  input_identifier: message
+  next_screen: enter_email_address
+
+enter_email_address:
+  type: input_screen
+  text: Enter receiver email
+  input_identifier: email
+  next_screen: show_details
+
+show_details:
+  type: quit_screen
+  text: Your message {{mesage}} has been successfully sent to {{email}}

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'messenger',
+    'ussd.apps.UssdConfig',
     'crispy_forms'
 ]
 
@@ -145,5 +146,11 @@ EMAIL_HOST_PASSWORD = os.environ.get('MY_EMAIL_HOST_PASSWORD')
 LOGIN_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Change session serializer to pickle serializer for USSD
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+#Path to USSD Screen Strings
+DEFAULT_USSD_SCREEN_JOURNEY = "messenger.ussd_sceen.yaml"
 
 django_heroku.settings(locals())
