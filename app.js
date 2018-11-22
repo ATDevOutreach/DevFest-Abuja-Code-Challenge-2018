@@ -6,7 +6,7 @@ const express       = require('express'),
       flash         = require('connect-flash'),
       session       = require('express-session'),
       sms           = require('./routes/sms'),
-      call          = require('./routes/call'),
+      call          = require('./routes/payments'),
       landing       = require('./routes/landing');
 
 // Connecting to mlab database
@@ -32,7 +32,7 @@ app.set('view engine', 'ejs');
 // Using imported routes
 app.use('/',landing);
 app.use('/sms',sms);
-app.use('/call',call);
+app.use('/payment',call);
 
 // Opening port
 app.listen(port,() => {

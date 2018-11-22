@@ -49,3 +49,14 @@ body {
   width: 40vw;
   background: rgba(248, 248, 248, 0.8);
 }
+
+#message-area {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+}
+.textarea {
+  width: 35vw;
+  max-width: 40vw !important;
+}

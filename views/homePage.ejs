@@ -10,19 +10,25 @@
   <div class="landing">
     <img src="images/landing.png" alt="A background image showing african map">
   </div>
-  <div class="form-cover">
-    <div class="form">
-      <form action="/sms/send" method="post">
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea name="message" id="message" cols="20" rows="10" placeholder="e.g Please let's meet by 10am" class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-outline-success">Send message</button>
-        </div>
-      </form>
-      <form action="/call" method="post">
-        <button type="submit">Make call</button>
-      </form>
-  </div>
+   
+    <div class="form-cover">
+      <div class="form">
+        <form action="/sms/send" method="post">
+          <div class="card text-white bg-success mb-3 textarea" style="max-width: 18rem;">
+            <div class="card-header">
+              <h5 class="card-title">Enter recipients phone number</h5>
+              <input type="text" name="number" id="message-area" placeholder="e.g 2348009876543">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Type your message below</h5>
+                <p class="card-text"><textarea name="message" id="message-area" cols="55" rows="10"></textarea></p>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-outline-light">Send message</button>
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  
 <% include partials/footer %>

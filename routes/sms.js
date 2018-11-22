@@ -10,10 +10,9 @@ let sms = AfricasTalking.SMS
 
 router.post('/send',(req,res) => {
   const options = {
-    to: ['+2347033253198'],
+    to: [req.body.number],
     message: req.body.message
   }
-
   // Send message and capture the response or error
   sms.send(options)
   .then( response => {
@@ -23,6 +22,8 @@ router.post('/send',(req,res) => {
   })
   .catch( error => {
       console.log(error);
+      req.flash('error', 'Oops, something went wrong');
+      res.redirect('../home')
   });
 })
 
