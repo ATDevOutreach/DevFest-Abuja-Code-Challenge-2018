@@ -6,13 +6,13 @@ const express     = require('express'),
       AfricasTalking = require('africastalking')(options),
       router      = express.Router();
 
-let sms = AfricasTalking.SMS
+let sms = AfricasTalking.SMS;
 
 router.post('/send',(req,res) => {
   const options = {
     to: [req.body.number],
     message: req.body.message
-  }
+  };
   // Send message and capture the response or error
   sms.send(options)
   .then( response => {
