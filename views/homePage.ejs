@@ -1,0 +1,71 @@
+<% include partials/header %>
+  <% if(message.length > 0){%>
+    <div id="alertDialog" class="alert alert-success register-success">
+      <span>
+        <p role="alert"><%=message%></p>
+        <p onclick="hideAlert()" class="close-alert">X</p>
+      </span>          
+    </div>
+  <% }%>
+  <div class="landing">
+    <img src="images/landing.png" alt="A background image showing african map">
+  </div>
+   
+    <div class="form-cover">
+      <div class="radio-btns">
+        <label for="sms">SMS</label>
+        <input type="radio" name="type" onclick="changeType('sms')" id="sms" value="SMS" checked>
+        <label for="payment">Payment</label>
+        <input type="radio" name="type" onclick="changeType('payment')" id="payment" value="Payment">
+      </div>
+      <div class="form" id="sms-form">
+        <form action="/sms/send" method="post">
+          <div class="card text-white bg-success mb-3 textarea" style="max-width: 18rem;">
+            <div class="card-header">
+              <h5 class="card-title">Enter recipients phone number</h5>
+              <input type="text" name="number" id="message-area" placeholder="e.g 2348009876543">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Type your message below</h5>
+                <p class="card-text"><textarea name="message" id="message-area" cols="55" rows="10"></textarea></p>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-outline-light">Send message</button>
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="form" id="payment-form" style="display:none;">
+        <form action="/payment" method="post">
+          <div class="card text-white bg-success mb-3 textarea" style="max-width: 18rem;">
+            <div class="card-header">
+              <input type="text" name="number" id="message-area" placeholder="e.g 2348009876543">
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                  <div class="form-group">
+                    <label for="currency">Select country</label>
+                    <select name="currency" id="currency" class="form-control" required>
+                      <option value="NGN">Nigeria</option>
+                      <option value="KES">Kenya</option>
+                       <option value="UGX">Uganda</option>
+                       <option value="MWK">Malawi</option>
+                       <option value="TZS">Tanzania</option>
+                      <option value="RWF">Rwanda</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="amount">Enter amount</label>
+                    <input type="number" name="amount" id="amount" placeholder="e.g 300" class="form-control" required>
+                  </div>
+                </p>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-outline-light">Make payment</button>
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+<% include partials/footer %>
