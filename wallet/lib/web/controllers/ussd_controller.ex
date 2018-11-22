@@ -1,5 +1,6 @@
 defmodule WalletWeb.UssdController do
   use WalletWeb, :controller
+  require Logger
 
   action_fallback(WalletWeb.FallbackController)
 
@@ -17,8 +18,9 @@ defmodule WalletWeb.UssdController do
   end
 
   def index(conn, %{"text" => "1", "phoneNumber" => phone}) do
-    {:ok, balance} = Wallet.get_available_balance(phone: phone)
-    response = "END Your account balance is #{balance}"
+    balance = Wallet.get_available_balance(phone: phone, term: :string)
+
+    response = "END Your account balance is NGN #{balance}"
 
     send_resp(conn, :ok, response)
   end
@@ -29,35 +31,15 @@ defmodule WalletWeb.UssdController do
     send_resp(conn, :ok, response)
   end
 
-  def index(conn, %{"text" => "3", "phoneNumber" => _}) do
-    response = "CON Enter OTP to approve transfer:"
-
-    send_resp(conn, :ok, response)
-  end
-
-  def index(%{assigns: %{level: 2}} = conn, %{
-        "text" => "3*" <> otp,
-        "phoneNumber" => phone_from
-      }) do
-    response =
-      case Wallet.approve_transfer(otp) do
-        {:error, :not_found} -> "END Invalid OTP"
-        {:error, :recipient_not_found} -> "END Invalid recipient"
-        {:ok, _} -> "END Transfer approved"
-      end
-
-    send_resp(conn, :ok, response)
-  end
-
   def index(%{assigns: %{level: 2}} = conn, %{
         "text" => "2*" <> phone_to,
         "phoneNumber" => phone_from
       }) do
     Wallet.create_user_if_not_exists(phone: phone_to)
 
-    {:ok, current_balance} = Wallet.get_available_balance(phone: phone_from)
+    current_balance = Wallet.get_available_balance(phone: phone_from, term: :string)
 
-    response = "CON Enter amount to transfer (current balance is #{current_balance}):"
+    response = "CON Enter amount to transfer (current balance is NGN #{current_balance}):"
 
     send_resp(conn, :ok, response)
   end
@@ -76,13 +58,7 @@ defmodule WalletWeb.UssdController do
             {:error, :insufficient_balance} ->
               "END Insufficient balance"
 
-            {:ok, otp} ->
-              # Send OTP via sms
-              spawn(fn ->
-                msg = "Use #{otp} to approve the transfer of #{amount} to #{phone_to}"
-                # TODO: Send sms
-              end)
-
+            {:ok, _} ->
               "END Transfer pending. Use the OTP sent to you to approve"
           end
 
@@ -93,8 +69,27 @@ defmodule WalletWeb.UssdController do
     send_resp(conn, :ok, response)
   end
 
+  def index(conn, %{"text" => "3", "phoneNumber" => _}) do
+    response = "CON Enter OTP to approve transfer:"
+
+    send_resp(conn, :ok, response)
+  end
+
+  def index(%{assigns: %{level: 2}} = conn, %{"text" => "3*" <> otp, "phoneNumber" => _}) do
+    response =
+      case Wallet.approve_transfer(otp) do
+        {:error, :not_found} -> "END Invalid OTP"
+        {:error, :recipient_not_found} -> "END Invalid recipient"
+        {:ok, _} -> "END Transfer approved"
+      end
+
+    send_resp(conn, :ok, response)
+  end
+
   # The first port of call for the controller
   def action(conn, _) do
+    Logger.info("Received params: #{inspect(conn.params)}")
+
     text_parts =
       conn.params
       |> Map.get("text")

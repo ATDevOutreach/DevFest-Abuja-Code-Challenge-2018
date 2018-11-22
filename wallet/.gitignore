@@ -35,3 +35,4 @@ wallet-*.tar
 # variables.
 /config/*.secret.exs
 .elixir_ls/
+.env

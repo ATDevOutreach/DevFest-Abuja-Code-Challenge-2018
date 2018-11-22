@@ -7,8 +7,12 @@
 # General application configuration
 use Mix.Config
 
-config :wallet,
-  ecto_repos: [Wallet.Repo]
+config :wallet, ecto_repos: [Wallet.Repo]
+
+config :wallet, :at,
+  api_key: System.get_env("AT_API_KEY"),
+  url: System.get_env("AT_URL"),
+  username: System.get_env("AT_USERNAME")
 
 # Configures the endpoint
 config :wallet, WalletWeb.Endpoint,

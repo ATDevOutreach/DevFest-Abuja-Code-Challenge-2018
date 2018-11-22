@@ -9,5 +9,6 @@ defmodule WalletWeb.Router do
     pipe_through(:api)
 
     post("/ussd_handler", UssdController, :index)
+    get("/ussd_handler", UssdController, :index)
   end
 end
