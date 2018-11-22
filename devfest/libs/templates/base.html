@@ -20,22 +20,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-users"></i>
-                        Home
+                    <a class="nav-link" href="{% url 'api:index' %}">
+                        <i class="fas fa-fw fa-user"></i>
+                        Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.html">
+                    <a class="nav-link" href="{% url 'account_logout' %}">
+                        <i class="fas fa-fw fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </li>
+                
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_signup' %}">
                         <i class="fas fa-fw fa-user-check"></i> Register
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{% url 'account_login' %}">
                         <i class="fas fa-fw fa-sign-in-alt"></i> Login
                     </a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
