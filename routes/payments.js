@@ -16,14 +16,19 @@ router.post('/',(req,res) => {
     amount: req.body.amount,
     metaData: {name: 'Abubakre Abdulqudus'}
   }
-  console.log(options);
+  
   // Make the call
-  // payment.mobileCheckout(options)
-  // .then(response => {
-  //     console.log(response);
-  // }).catch(error => {
-  //     console.log(error);
-  // });
+  payment.mobileCheckout(options)
+  .then(response => {
+      console.log(response);
+      // show flash message if payment is successfully made
+      req.flash('success', 'Message sent successfully');
+      res.redirect('../home');
+  }).catch(error => {
+      console.log(error);
+      req.flash('success', 'Message sent successfully');
+      res.redirect('../home');
+  });
 })
 
 
