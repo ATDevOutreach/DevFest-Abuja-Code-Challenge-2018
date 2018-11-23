@@ -1,0 +1,18 @@
+version: '2'
+services:
+  wallet:
+    build: .
+    image: wallet
+    container_name: wallet
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - "${PWD}:/opt/app"
+    environment:
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - AT_API_KEY=${AT_API_KEY}
+      - AT_USERNAME=${AT_USERNAME}
+      - AT_URL=${AT_URL}
+    command:
+      - ./run.sh
