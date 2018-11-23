@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -33,7 +34,6 @@ def create_account(sender, **kwargs):
             user=kwargs['instance']
         )
 
-
 class Activity(models.Model):
     ACTIONS = (
         ('RC', 'Account TopUp'),
@@ -53,18 +53,33 @@ class Activity(models.Model):
     description = models.CharField(max_length=100, blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
 
-
-def success(user, action, description=None):
+    @classmethod
+    def sms_sent(cls, username):
+        """ Return Number of SMS Sent """
+        return cls.objects.filter(
+            user=User.objects.get(username=username)).filter(
+                action='SM').filter(status='S').count()
+    
+    @classmethod
+    def airtime_recharged(cls, username):
+        """ Return Number of airtimes recharged """
+        return cls.objects.filter(
+            user=User.objects.get(username=username)).filter(
+                action='AR').filter(status='S').count()
+    
+def success(request, action, description=None, message=None):
     """ Create a success Activity """
+    messages.success(request, message)
+    return Activity.objects.create(user=request.user, action=action, description=description, status='S')
 
-    return Activity.objects.create(user=user, action=action, description=description, status='S')
 
-
-def failed(user, action, description=None):
+def failed(request, action, description=None, message=None):
     """ Create a failed Activity """
-    return Activity.objects.create(user=user, action=action, description=description, status='F')
+    messages.error(request, message)
+    return Activity.objects.create(user=request.user, action=action, description=description, status='F')
 
 
-def pending(user, action, description=None):
+def pending(request, action, description=None, message=None):
     """ Create a pending Activity """
-    return Activity.objects.create(user=user, action=action, description=description, status='P')
+    messages.info(request, message)
+    return Activity.objects.create(user=request.user, action=action, description=description, status='P')

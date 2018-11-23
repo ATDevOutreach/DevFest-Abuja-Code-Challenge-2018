@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load beautify %}
 {% block content %}
-<div class="container-fluid bg-primary my-5 py-3 d-flex justify-content-center align-items-center" style="height: 90vh">
-  <div class="row w-100">
-    <div class="col-md-5">
+<div class="container mt-5 py-3">
+  <div class="row row justify-content-md-center">
+    <div class="col-md-4">
       <div class="my-2">
-        <h4>Top Up Your Account </h4>
-        Use Your Credit Card to Recharge your account
+        <h4>Enter the OTP </h4>
+        Enter OTP sent to your registered phone number
         <form method="POST">
           {% for field in form %}
           {% csrf_token %}
@@ -27,11 +27,6 @@
             <input type="submit" class="btn btn-outline-default" value="Send">
           </div>
         </form>
-      </div>
-    </div>>
-    <div class="col-md-7 d-flex align-items-center">
-      <div class="text-center">
-        <h4>Send Your SMS Without</h4>
       </div>
     </div>
   </div>

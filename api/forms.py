@@ -32,8 +32,6 @@ class SMSForm(forms.Form):
             attrs={'placeholder': '070xxxxxxxxxxx'}
         ),
         label='Phone',
-        max_length=11,
-        min_length=11
     )
     message = forms.CharField(widget=forms.Textarea(
         attrs={'placeholder': 'message'})

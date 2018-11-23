@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+from django.contrib.messages import constants as messages
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,7 +44,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'ussd.apps.UssdConfig',
     'api',
 ]
 
@@ -154,9 +155,11 @@ AT_USERNAME = 'sandbox'
 AT_API_KEY = '30dfdbd03031a7bbfb0e9855106bebb48f24259e7503eee7df5c7bb82b29da97'
 AT_PRODUCT_NAME = 'xms'
 
-# USSD Config
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
-
 
 # Pricing Config
 COST_MESSAGE = 3.1
+
+# Messaging FrameWork
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
