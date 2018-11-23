@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+<div class="container- my-5 py-3 text-center">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Transaction</th>
+                <th scope="col">Status</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for activity in activities %}
+                <tr>
+                    <th scope="row">{{ activity.date|naturaltime }}</th>
+                    <td>{{ activity.get_action_display }}</td>
+                    <td>{{ activity.get_status_display }}</td>
+                    <td>{{ activity.description }}</td>
+                </tr>
+            {% empty %}
+                You have no activities yet
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

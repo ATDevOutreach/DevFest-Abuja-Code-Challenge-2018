@@ -1,0 +1,8 @@
+.cards:hover {
+    box-shadow: 1px -1px 4px 3px #eee;
+    text-decoration: none;
+    color: #007bff!important;
+}
+.cards:hover > div{
+    color: #007bff!important
+}

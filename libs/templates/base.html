@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>xms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="mainNav">
+        <a class="navbar-brand" href="{% url 'api:index' %}">xms</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'api:index' %}">
+                        <i class="fas fa-fw fa-user"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="{% url 'api:history' %}">
+                            <i class="fas fa-fw fa-history"></i>
+                            History
+                        </a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}">
+                        <i class="fas fa-fw fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </li>
+                
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_signup' %}">
+                        <i class="fas fa-fw fa-user-check"></i> Register
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_login' %}">
+                        <i class="fas fa-fw fa-sign-in-alt"></i> Login
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% include 'messages.html' %}
+    {% block content %}
+
+    {% endblock %}
+    <footer class="sticky-footer fixed-bottom bg-primary text-light">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © xms 2018</small>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
