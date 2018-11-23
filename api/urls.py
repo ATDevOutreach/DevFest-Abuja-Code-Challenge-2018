@@ -9,5 +9,8 @@ urlpatterns = [
     path('sms/', views.SendSMS.as_view(), name='send_sms'),
     path('sms/success', views.SmsSuccessView.as_view(), name='sms_success'),
     path('sms/failure', views.SmsFailureView.as_view(), name='sms_failure'),
-
+    path('account/recharge', views.RechargeAccountView.as_view(), name='recharge_account'),
+    path('recharge/verify', views.ConfirmTransacionView.as_view(), name='confirm_transaction'),
+    path('airtime/recharge', views.AirtimeRechargeView.as_view(), name='airtime_recharge'),
+    path('history/', views.HistoryView.as_view(), name='history'),
 ]

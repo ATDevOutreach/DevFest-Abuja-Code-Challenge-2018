@@ -1,47 +1,51 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %} 
-    <div class="container-fluid bg-primary my-5 py-3">
-        <div class="row">
-            <div class="col-md-7 d-flex align-items-center justify-content-center">
-                <div class="text-center">
-                    <h4>Send Your SMS Without using your mobile Airtime</h4>
-                    Recharge your SMS bank and send SMS without stress
+    {% if not request.user.is_authenticated %}
+        <div class="container-fluid bg-primary my-5 py-3">
+            <div class="row">
+                <div class="col-md-7 d-flex align-items-center justify-content-center">
+                    <div class="text-center">
+                        <h4>Send Your SMS Without using your mobile Airtime</h4>
+                        Recharge your SMS bank and send SMS without stress
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-5">
-                <div class="my-2">
-                    <img src="{% static 'images/page-shot.png' %}" class="img-fluid" />
-                </div>
-            </div>>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 bg-light p-5 text-center">
-                <i class="fas fa-credit-card fa-5x"></i>
-                <div>
-                    Fast Airtime Recharge
-                    Recharge Your Account Balance easily with one click
-                </div>
-                <button class="btn btn-secondary">Recharge Now</button>
-            </div>
-            <div class="col-md-4 p-5 bg-secondary text-center">
-                <i class="fas fa-mobile-alt fa-5x"></i>
-                <div>
-                    Send SMS Easily
-                    Enter the Phone Number and text with a click your SMS is delivered with your number
-                </div>
-                <button class="btn btn-primary">Send SMS</button>
-            </div>
-            <div class="col-md-4 p-5 bg-light text-center">
-                <i class="fas fa-envelope fa-5x"></i>
-                <div>
-                    Send bulk SMS Easily
-                    Deliver your SMS to a large number of people. Save a contact lists and send
-                </div>
-                <button class="btn btn-secondary">Get Started</button>
+                <div class="col-md-5">
+                    <div class="my-2">
+                        <img src="{% static 'images/page-shot.png' %}" class="img-fluid" />
+                    </div>
+                </div>>
             </div>
         </div>
-    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 bg-light p-5 text-center">
+                    <i class="fas fa-credit-card fa-5x"></i>
+                    <div>
+                        Fast Airtime Recharge
+                        Recharge Your Account Balance easily with one click
+                    </div>
+                    <button class="btn btn-secondary">Recharge Now</button>
+                </div>
+                <div class="col-md-4 p-5 bg-secondary text-center">
+                    <i class="fas fa-mobile-alt fa-5x"></i>
+                    <div>
+                        Send SMS Easily
+                        Enter the Phone Number and text with a click your SMS is delivered with your number
+                    </div>
+                    <button class="btn btn-primary">Send SMS</button>
+                </div>
+                <div class="col-md-4 p-5 bg-light text-center">
+                    <i class="fas fa-envelope fa-5x"></i>
+                    <div>
+                        Send bulk SMS Easily
+                        Deliver your SMS to a large number of people. Save a contact lists and send
+                    </div>
+                    <button class="btn btn-secondary">Get Started</button>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        {% include 'dashboard.html' %}
+    {% endif %}
 {% endblock %}

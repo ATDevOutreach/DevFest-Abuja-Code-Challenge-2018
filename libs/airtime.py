@@ -14,4 +14,4 @@ class AIRTIME:
 
     def send_single(self, phone_number, amount, currency_code='NGN'):
         return self.airtime.send(
-            phone_number=phone_number, amount=amount)
+            phone_number=phone_number, amount=amount, currency_code=currency_code)

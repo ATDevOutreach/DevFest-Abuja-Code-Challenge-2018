@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.humanize',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'ussd.apps.UssdConfig',
     'api',
-
 ]
 
 MIDDLEWARE = [
@@ -142,7 +142,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 
 # Auth Settings
 LOGIN_REDIRECT_URL = r'/'
-
+ACCOUNT_FORMS = {'signup': 'api.forms.SignUpForm'}
 
 # Email Settings
 if DEBUG:
@@ -152,6 +152,11 @@ if DEBUG:
 AT_APP_NAME = 'Sandbox'
 AT_USERNAME = 'sandbox'
 AT_API_KEY = '30dfdbd03031a7bbfb0e9855106bebb48f24259e7503eee7df5c7bb82b29da97'
+AT_PRODUCT_NAME = 'xms'
 
 # USSD Config
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+
+# Pricing Config
+COST_MESSAGE = 3.1

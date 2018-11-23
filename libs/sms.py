@@ -13,5 +13,6 @@ class SMS:
         # Get the SMS service
         self.sms = africastalking.SMS
 
-    def send_sms_sync(self, recipients, message, sender=False):
+    def send_sms_sync(self, recipients, message, sender):
+        message = str(f'From: {sender}\n') + message 
         return self.sms.send(message, recipients)
