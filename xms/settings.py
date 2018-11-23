@@ -152,8 +152,8 @@ if DEBUG:
 # AT Config
 AT_APP_NAME = 'Sandbox'
 AT_USERNAME = 'sandbox'
-AT_API_KEY = '30dfdbd03031a7bbfb0e9855106bebb48f24259e7503eee7df5c7bb82b29da97'
-AT_PRODUCT_NAME = 'xms'
+AT_API_KEY = 'Your API KeY'
+AT_PRODUCT_NAME = 'Your APP Product KEY'
 
 
 # Pricing Config
