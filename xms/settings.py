@@ -136,7 +136,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'libs', 'static')
 ]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # AllAuth Settings
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
